@@ -9,6 +9,7 @@ use App\Http\Controllers\FeeController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +87,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('assign_subject/edit/{id}', [AssignSubjectToClassController::class, 'edit'])->name('assign_subject.edit');
         Route::put('assign_subject/update', [AssignSubjectToClassController::class, 'update'])->name('assign_subject.update');
         Route::delete('assign_subject/destroy/{id}', [AssignSubjectToClassController::class, 'destroy'])->name('assign_subject.destroy');
+        // teacher
+        Route::get('teacher', [TeacherController::class, 'index'])->name('teacher.index');
+        Route::get('teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
+        Route::post('teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+        Route::get('teacher/edit{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
+        Route::put('teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
+        Route::delete('teacher/destroy/{id}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
     });
 });
 
@@ -100,5 +108,15 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
         Route::get('change_password', [UserController::class, 'change_password'])->name('student.change_password');
         Route::post('update_password', [UserController::class, 'update_password'])->name('student.update_password');
+    });
+});
+
+Route::group(['prefix' => 'teacher'], function (){
+    Route::group(['middleware' => 'teacher.guest'], function () {
+
+    });
+
+    Route::group(['middleware' => 'teacher.auth'], function () {
+
     });
 });

@@ -481,6 +481,29 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>
+                                   Teacher
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('teacher.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Teacher</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Teacher</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item menu-open">
                             <a href="{{ route('admin.logout') }}" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
